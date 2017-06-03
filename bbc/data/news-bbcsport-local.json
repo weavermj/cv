@@ -1,0 +1,90 @@
+
+{
+	"name" : "ticker",
+	"version" : "0.1",
+	"published" : "",
+	"entries" : [
+ 							{
+				"headline": "Team Sky's Chris Froome wins stage four of Tirreno-Adriatico to go second in race overall",
+				"prompt": "CYCLING",
+								"url": "http://www.bbc.co.uk/sport/0/cycling/21726564",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "Wales keep Six Nations title hopes alive with 28-18 victory in Scotland while Ireland draw 13-13 with France",
+				"prompt": "RUGBY UNION",
+								"url": "http://www.bbc.co.uk/sport/0/rugby-union/21692234",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "James Woods wins slopestyle silver and Britain's first medal at Freestyle Ski World Championships in 20 years",
+				"prompt": "WINTER SPORTS",
+								"url": "http://www.bbc.co.uk/sport/0/winter-sports/21727577",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "Ireland are the Women's Six Nations champions after England beat Italy 34-0",
+				"prompt": "RUGBY UNION",
+								"url": "http://www.bbc.co.uk/sport/0/rugby-union/21727157",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "Favourite Bobs Worth heads a 12-strong field for Friday's Gold Cup at Cheltenham",
+				"prompt": "HORSE RACING",
+								"url": "http://www.bbc.co.uk/sport/0/horse-racing/21727199",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "Serita Shone wins bronze medal at British Bobsleigh Championships - 17 months after fracturing her spine in a crash",
+				"prompt": "WINTER SPORTS",
+								"url": "http://www.bbc.co.uk/sport/0/winter-sports/21725332",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "Nick Compton and Alastair Cook score hundreds as England reach 234-1 to reduce New Zealand's lead to 59 in Dunedin",
+				"prompt": "CRICKET",
+								"url": "http://www.bbc.co.uk/sport/0/cricket/21723243",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "Monday's meeting at Stratford is abandoned because of a waterlogged course.",
+				"prompt": "HORSE RACING",
+								"url": "http://www.bbc.co.uk/sport/0/horse-racing/21725156",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+						,
+								{
+				"headline": "For all your breaking sports news follow us on Twitter: @bbcsport  ",
+				"prompt": "FOLLOW US",
+								"url": "https://twitter.com/#!/bbcsport",
+								"isLive": "false",
+				"isBreaking": "false",
+				"mediaType": "Standard"
+			}
+								]
+
+
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBC Pagination Device</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+		 
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+
+        <link href="css/website.css" rel="stylesheet" media="screen">
+        <link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen">
+
+
+		<script src="js/lib/jquery-min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	
+
+	<div class="container">
+
+        <h1>BBC Pagination Device<span>Matthew Weaver</span></h1>
+
+        <ul class="nav">
+            <li><a href="index.html">Introduction</a></li>
+            <li><a href="readme.html">Read Me</a></li>
+            <li><a href="assumptions.html">Assumptions</a></li>
+            <li><a href="demo.html">Static Demos</a></li>
+            <li><a href="livedemo.html"><b>Live Demos</b></a></li>
+            <li><a href="testing.html">Testing</a></li>
+            <li><a href="testdata.html">Test Data</a></li>
+            <li><a href="issues.html">Known Issues</a></li>
+            <li><a href="source.html">Source</a></li>
+        </ul>
+        <hr />
+		<div class="page">
+
+            <h3>Live Demos</h3>
+            <p>
+                Here I show examples of the BBC Pagination Device being used with live JSON feeds from various BBC news tickers.
+            </p>
+
+            <hr class="bottom_gap"/>
+
+            <h4>BBC Sport Ticker Feed</h4>
+            <p>
+                Here the BBC Sport news items from the ticker are displayed with the title showing, to clearly
+                identify which area of sport each article is about.
+            </p>
+            <code><a href="http://polling.bbc.co.uk/sport/0/16189337/ticker.sjson">JSON Data (BBC Sport)</a></code>
+            <div id="feed_bbcsport" class="feed"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>BBC News Ticker Feed</h4>
+            <p>
+                When showing just BBC news items, the user experience is best when the title is hidden as most items seem to have a
+                prompt of "LATEST" in the JSON data. As "LATEST" doesn't really add any information to the context of the feed,
+                hiding the title saves screen real-estate.
+            </p>
+            <code><a href="http://www.bbc.co.uk/news/10284448/ticker.sjson">JSON Data (BBC News)</a></code>
+            <div id="feed_bbcnews" class="feed"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>BBC Sport and BBC News Combined Ticker Feed</h4>
+            <p>
+                Here we demonstrate the felxibility of the pagaination device by combining two BBC feeds together into
+                a single set of paginated news articles, updated every 2 minutes.
+            </p>
+            <code><a href="http://polling.bbc.co.uk/sport/0/16189337/ticker.sjson">JSON Data (BBC Sport)</a></code>
+            <code><a href="http://www.bbc.co.uk/news/10284448/ticker.sjson">JSON Data (BBC News)</a></code>
+
+            <div id="feed_multiple" class="feed"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Breaking BBC News and BBC Sport stories</h4>
+            <p>
+                If there are any breaking news items in either the BBC News or BBC Sport feeds, they will show here. The update interval is set to
+                20 seconds to ensure we capture breaking news more quickly.
+            </p>
+            <code><a href="http://www.bbc.co.uk/news/10284448/ticker.sjson">JSON Data (BBC News)</a></code>
+            <code><a href="http://polling.bbc.co.uk/sport/0/16189337/ticker.sjson">JSON Data (BBC Sport)</a></code>
+
+            <div id="feed_bbc_breaking" class="feed"></div>
+		</div>
+
+        <script src="js/jquery_initiator.js"></script>
+        <script src="js/BBCPaginate/js/BBCPaginate.jQuery.js" type="text/javascript"></script>
+
+        <hr class="bottom_gap"/>
+    </div>
+    </body>
+</html>

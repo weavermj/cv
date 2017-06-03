@@ -1,0 +1,49 @@
+/* Website specific CSS */
+
+h1 span {
+    font-size: 60%;
+    float: right;
+    font-weight: normal;
+}
+
+div.feed {
+    margin-top: 20px;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 30px;
+    margin-left: 0px;
+    padding-right: 10px;
+}
+
+.limit_width {
+    max-width: 580px;
+}
+
+p.left_gap{
+    margin-left: 25px;
+}
+
+hr.bottom_gap {
+    margin-bottom: 20px;;
+}
+
+dd {
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+/* Media query for really tiny displays */
+@media screen and (max-width: 320px) {
+    h1 span {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    h1 span {
+        display: none;
+    }
+}
+
+

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+		<title>BBC Pagination Device</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+		 
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+
+        <link href="css/website.css" rel="stylesheet" media="screen">
+        <link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen">
+
+
+		<script src="js/lib/jquery-min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	
+
+
+	<div class="container">
+
+        <h1>BBC Pagination Device<span>Matthew Weaver</span></h1>
+
+        <ul class="nav">
+            <li><a href="index.html">Introduction</a></li>
+            <li><a href="readme.html"><b>Read Me</b></a></li>
+            <li><a href="assumptions.html">Assumptions</a></li>
+            <li><a href="demo.html">Static Demos</a></li>
+            <li><a href="livedemo.html">Live Demos</a></li>
+            <li><a href="testing.html">Testing</a></li>
+            <li><a href="testdata.html">Test Data</a></li>
+            <li><a href="issues.html">Known Issues</a></li>
+            <li><a href="source.html">Source</a></li>
+        </ul>
+        <hr />
+		<div class="page">
+
+            <h3>Read Me</h3>
+            <p>
+                Details of how to install, configure and invoke the BBC Pagination Device jQuery plugin are listed here.
+            </p>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Dependencies</h4>
+            <ul>
+                <li><b>jQuery</b> - this plugin was written and tested against jQuery version 1.9.1</li>
+            </ul>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Installing the plugin</h4>
+            <p>
+                All files relating to the plugin are contained in the BBCPaginate folder.
+                jQuery 1.9.1 is also bundled with the installation files.
+            </p>
+            <p>
+                The folder structure is as follows:
+                <ul>
+                    <li><b>css</b> - contains css specific to the navigational component of the plugin</li>
+                    <li><b>img</b> - contains the previous and next navigation GEL icons which are referenced from the CSS</li>
+                    <li><b>js</b> - contains the plugin file</li>
+                </ul>
+            </p>
+            <p>
+                Download the <a href="BBCPaginate.zip">BBCPaginate.zip</a> file and extract the contents to a suitable location.
+                In the example below we have extracted the contents to a folder 'js' where all other JavaScript libraries are contained.
+            </p>
+            <p>
+                In your HTML template, you will need to use 3 includes:
+            </p>
+            <p>
+                <code>&lt;script src="js/lib/jquery-min.js"&gt;&lt;/script&gt;</code> - jQuery 1.9.1 library, minimised
+            </p>
+            <p>
+                <code>&lt;link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen"&gt;</code> - associated CSS for the plugin
+            </p>
+            <p>
+                <code>&lt;script src="js/BBCPaginate/js/BBCPaginate.jQuery.js"&gt;&lt;/script&gt;</code> - the BBCPaginate plugin
+            </p>
+            <p>
+                It is recommended to place the script include for the BBCPaginate.jQuery.js file in the body of your HTML document
+                near to the div elements that you wish to paginate - this will prevent the loading of the script from delaying
+                the rendering of other elements as the HTML page loads. The jQuery and CSS includes can be placed in the HTML &lt;head&gt; section
+                (and you can omit the jQuery include if you already have jQuery configured for your website).
+            </p>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Invoking the plugin</h4>
+            <p>
+                To add the plugin to your HTML page, you will need to add a target div in your HTML source, for example:
+            </p>
+            <p>
+                <code>&lt;div id="feed1"&gt;&lt;/div&gt;</code>
+            </p>
+            <p>
+                To add the pagination device to the &lt;div&gt;, target it with jQuery from a suitable script. I used the following script:
+            </p>
+            <p>
+                <code>&lt;script src="js/jquery_initiator.js" &gt;&lt;/script&gt;</code>
+            </p>
+
+            <p>
+                which contains
+            </p>
+            <p>
+                <code>$("div#feed1").BBCPaginate();</code>
+            </p>
+            <p>
+                This will render the pagination component in the &lt;div&gt; element that has an id of feed1 with the default options.
+            </p>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Options</h4>
+
+            <ul>
+                <li><b>feed_url</b> - a relative or absolute URL to the file which contains the JSON news items that you wish to paginate</li>
+            </ul>
+            <p class="left_gap">
+                <code>default option: "http://www.bbc.co.uk/news/10284448/ticker.sjson" </code>
+            </p>
+
+            <p class="left_gap">
+                To pass in multiple URLs, separate each one with a pipe (|) character, for example:
+            </p>
+            <p class="left_gap">
+                <code>feed_url: "http://www.bbc.co.uk/news/10284448/ticker.sjson|http://polling.bbc.co.uk/sport/0/16189337/ticker.sjson" </code>
+            </p>
+
+            <ul>
+                <li><b>feed_type</b> - specifies which format the input feed is in, so that different data formats can be supported</li>
+            </ul>
+            <p class="left_gap">
+                <code>valid options: "static", "bbc_ticker" </code>
+            </p>
+            <p class="left_gap">
+                <code>default option: "bbc_ticker" </code>
+            </p>
+            <p class="left_gap">
+                When the feed_type is set to "bbc_ticker", title is mapped to the "prompt" attribute and description is mapped to the "headline" attribute in the JSON data
+            </p>
+
+            <ul>
+                <li><b>news_type</b> - specifies the type of articles that you wish to filter from the feed(s)</li>
+            </ul>
+            <p class="left_gap">
+                <code>valid options: "all", "breaking" </code>
+            </p>
+            <p class="left_gap">
+                <code>default option: "all" </code>
+            </p>
+
+            <ul>
+                <li><b>show_title</b> - control whether or not the title attribute of news items is displayed</li>
+            </ul>
+            <p class="left_gap">
+                <code>valid options: true, false </code>
+            </p>
+            <p class="left_gap">
+                <code>default option: true </code>
+            </p>
+
+            <ul>
+                <li><b>update_interval</b> - how quickly, in milliseconds, the JSON news items are refreshed from the feed_url</li>
+            </ul>
+            <p class="left_gap">
+                <code>default option: 60000 (60 seconds) </code>
+            </p>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Example usage</h4>
+            <p>
+                Within the HTML page where paginated news items are required:
+            </p>
+            <p>
+            <code>
+                &lt;div id="feed_bbc" class="feed"&gt;&lt;/div&gt;
+            </code>
+            </p>
+            <p>
+                From a separate JavaScript file:
+            </p>
+            <pre>
+    $("div#feed_bbc").BBCPaginate( {
+        feed_url: "http://polling.bbc.co.uk/sport/0/16189337/ticker.sjson|http://polling.bbc.co.uk/sport/0/16189337/ticker.sjson",
+        feed_type: "bbc_ticker",
+        show_title: true,
+        news_type: "breaking",
+        update_interval: 120000
+    });
+            </pre>
+
+         <p>
+             This will load the news items from the ticker feed on the BBC Sport website, set the feed type to "bbc_ticker"
+             to ensure that the JSON data is interpreted correctly, set the title of the article to show (which for sport
+             news items will be the area of sport that the article relates to) and request the JSON data to be  pulled from
+             the source URL(s) every 2 minutes.
+         </p>
+
+		</div>
+        <hr class="bottom_gap"/>
+    </div>
+    </body>
+</html>

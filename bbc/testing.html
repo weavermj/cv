@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBC Pagination Device</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+		 
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+
+        <link href="css/website.css" rel="stylesheet" media="screen">
+        <link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen">
+
+
+		<script src="js/lib/jquery-min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+	<div class="container">
+
+        <h1>BBC Pagination Device<span>Matthew Weaver</span></h1>
+
+        <ul class="nav">
+            <li><a href="index.html">Introduction</a></li>
+            <li><a href="readme.html">Read Me</a></li>
+            <li><a href="assumptions.html">Assumptions</a></li>
+            <li><a href="demo.html">Static Demos</a></li>
+            <li><a href="livedemo.html">Live Demos</a></li>
+            <li><a href="testing.html"><b>Testing</b></a></li>
+            <li><a href="testdata.html">Test Data</a></li>
+            <li><a href="issues.html">Known Issues</a></li>
+            <li><a href="source.html">Source</a></li>
+        </ul>
+        <hr />
+		<div class="page">
+
+            <h3>Testing</h3>
+            <p>
+                To test the functionality of the plugin, I initially worked with static JSON data which had a known value and state.
+            </p>
+            <p>
+                There are some special cases that the pagination device needs to deal with, should we get an unexpected input when working with real live
+                JSON data. To test how each of these scenarios affected the behaviour of the component, I added a new instance of the pagination device to this page
+                and populated it with a set of static JSON data to represent a possible error scenario in the real world. I observed the behaviour, identified how it broke
+                the functionality of the pagination device and then implemented new logic in the plugin to cater for the error.
+            </p>
+            <p>
+                These scenarios are shown below.
+            </p>
+
+            <hr class="bottom_gap"/>
+
+            <h4>When there is only 1 item in the feed</h4>
+            <p>
+                In this scenario, it makes no sense for the previous and next navigation to show, so they are hidden. We still show a numeral to indicate there is
+                only one news item currently available in the feed, which is selected.
+            </p>
+
+            <code><a href="data/news-1.json">JSON Test Data - news-1.json</a></code>
+            <div id="feed_1item" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>When there are no items in the feed</h4>
+            <p>
+                Whilst we would hope that a JSON source would always contain some news data, it is possible for it to be empty. In this case, we would want
+                to hide the entire pagination device as it makes no sense to display pagination elements for data that is not present.
+            </p>
+
+            <p>
+                We can see that the pagination elements are present in the source, but they have been set to display: none to conserve screen real estate.
+            </p>
+            <code><a href="data/news-0.json">JSON Test Data - news-0.json</a></code>
+            <div id="feed_0items" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>When one of the JSON attributes is not as expected</h4>
+            <p>
+                In this scenario, we might be expecting an attribute named "title", but it might be present in the source file under a different name, for example "titel".
+            </p>
+            <p>
+            <ul>
+                <li><b>Item 2</b> - has a misnamed attribute of descriptions</li>
+                <li><b>Item 5</b> - has a misnamed attribute of titel</li>
+            </ul>
+            </p>
+            <p>
+                When this happened, the component would show the description of the next article, but the title of the previous article. This was corrected to hide the title
+                if it was not set in the news_items array.
+            </p>
+
+            <p>
+                If a description attribute can not be found in the JSON object, we skip it and don't add it to the news_items array, as displaying just a title does not really
+                give the user much information.
+            </p>
+
+
+            <p>
+                The resulting set of news items is reduced to 11, and no title displays against item 4 (which was item 5 in the original input before item 2 was removed from the set).
+            </p>
+
+            <code><a href="data/news-baditem.json">JSON Test Data - news-baditem.json</a></code>
+            <div id="feed_baditem" class="feed limit_width"></div>
+
+
+            <script src="js/jquery_initiator.js" ></script>
+            <script src="js/BBCPaginate/js/BBCPaginate.jQuery.js"></script>
+
+            <hr class="bottom_gap"/>
+
+            <h4>When one of the JSON attributes is present, but with empty content</h4>
+            <p>
+                This test checks what happens when one of the attributes is correctly referenced in the JSON data, but it has an empty value.
+            </p>
+            <p>
+            <ul>
+                <li><b>Item 3</b> - has an empty description</li>
+                <li><b>Item 5</b> - has an empty title</li>
+            </ul>
+            </p>
+            <p>
+                For item 3, this test revealed that when a description is empty, the title for that article would still display. This behaviour contradicts my earlier decision to hide news items
+                that have an incorrectly set description attribute, as just showing the title was not considered to provide much value.
+            </p>
+            <p>
+                For item 5, this test showed that the title was left blank, but there was additional whitespace left by the space being taken up by the title's &lt;span&gt; element. This
+                was corrected to hide the &lt;span&gt; tag when there is no title to show, which helps with the overall consistency of the look-and-feel.
+            </p>
+
+            <code><a href="data/news-emptyitem.json">JSON Test Data - news-emptyitem.json</a></code>
+            <div id="feed_emptyitem" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Malformed JSON file</h4>
+            <p>
+                We expect JSON files to be in the JSON format, but what would happen if the pagination device was pointed at a JSON file that contained invalid JSON markup?
+                This test was used to check the behaviour of the plugin when the closing square bracket is missing from the end of a JSON data set.
+            </p>
+
+            <p>
+                The pagination elements were hidden, but the containing &lt;div&gt; element was still present in the page. To correct this the plugin was modified to hide
+                the &lt;div&gt; when invalid JSON is passed in. A message is also written to the browser console to show what the error was, identifying which JSON file was invalid to
+                help with debugging. The console output should probably be removed in a final released version.
+            </p>
+            <code><a href="data/news-malformed.json">JSON Test Data - news-malformed.json</a></code>
+            <div id="feed_malformed" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Updates to the feed - the update adds extra items</h4>
+            <p>
+                When the feed is updated with additional news articles such that the number of items increases, the pagination options in the device should update to
+                reflect the new total number of items. The currently selected item should not change. If we are on item 6 in a 12 item set, and the update to the feed
+                adds item number 7, the last 2 page numbers should update to 12 and 13. Clicking the next navigation should move from 6 to 7 and the details of the new
+                article should be displayed when page 7 is the active page.
+            </p>
+            <p>
+                This test was successful.
+            </p>
+            <code><a href="data/news-updated-first.json">JSON Test Data - news-updated-first.json</a></code>
+            <div id="feed_updated_first" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Updates to the feed - the update adds a new first item - when the first item is selected</h4>
+            <p>
+                This test verifies what happens when the feed is updated with a new article at the beginning of the feed, and the
+                currently selected item is the first item.
+            </p>
+            <p>
+                If we are on item 1 in a 12 item set, and the update to the feed adds a new item number 1, the last 2 page numbers should update
+                to 12 and 13. The active page highlight should change to item 2, and the previous navigation should become enabled. Clicking the previous navigation should move from 2 to 1 and the details
+                of the new article should be displayed. The active page highlight should be shown on page 1. And the previous navigation should be disabled.
+            </p>
+            <p>
+                <ul>
+                    <li><b>Current item</b> - the user has item 1 as the active page</li>
+                    <li>
+                        <b>Add item 1</b> - the update to the feed adds a new item 1, the rightmost navigation numbers should change to 12 and 13,
+                        the active page highlight should move to item 2 and the previous navigation should become enabled</li>
+                    <li><b>Navigate back</b> - the active page highlight should change from 2 to 1, and the new item 1 should be displayed, and the previous navigation should become disabled</li>
+                    <li><b>Navigate forwards</b> - the active page highlight should change from 1 to 2, item 2 from the new set should be displayed (which was item 1 in the original set before the update)</li>
+                </ul>
+            </p>
+            <p>
+                This test failed. When the new item was added to the set the rightmost page navigation numbers updated correctly. The active page highlight remained at 1, and the old item
+                1 (now item 2 in the set) was still displayed. The previous navigation was disabled. Clicking the next navigation enabled the previous navigation,and moved the current page highlight
+                to 2, but did not update the details of the article displayed. This is a bit confusing for the user. An update to the logic is needed to correct this issue (it is not fixed in the current version).
+            </p>
+            <code><a href="data/news-updated-first.json">JSON Test Data - news-updated-first.json</a></code>
+            <div id="feed_updated_first" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Updates to the feed - the update adds a new last item - when the last item is selected</h4>
+            <p>
+                This test verifies what happens when the feed is updated with a new article at the end of the feed, and the
+                currently selected item is the last item.
+            </p>
+            <p>
+                If we are on item 12 in a 12 item set, and the update to the feed adds a new item number 13, the last 2 page numbers should update
+                to 12 and 13. The active page highlight should change to item 13, and the next navigation should remain disabled. Clicking the previous navigation should move from 13 to 12 and the details
+                of the previous article should be displayed.
+            </p>
+            <p>
+            <ul>
+                <li><b>Current item</b> - the user has item 12 as the active page</li>
+                <li>
+                    <b>Add item 13</b> - the update to the feed adds a new item 13, the rightmost navigation numbers should change to 12 and 13,
+                    the active page highlight should stay on item 12 and the next navigation should become enabled</li>
+                <li><b>Navigate back</b> - the active page highlight should change from 12 to 11, and item 11 should be displayed</li>
+                <li><b>Navigate forwards</b> - the active page highlight should change from 11 to 12, item 12 from the new set should be displayed (which was item 12 in the original set before the update)</li>
+            </ul>
+            </p>
+            <p>
+                This test failed. When the new item was added to the set the rightmost page navigation numbers updated correctly, and the active page
+                highlight remained over item 12. The next navigation, however, remained disabled. Clicking item 13 on the page navigation numbers correctly
+                showed the new item 13, and the active page highlight moved to item 13. Clicking the previous navigation moved the current page highlight to item 12
+                and enabled the next navigation arrow.
+            </p>
+            <p>
+                A fix was applied to the updateBackAndNext() function to check for this special case and enable the next navigation whenever
+                the active page is less than the number of items in the feed.
+            </p>
+            <code><a href="data/news-updated-last.json">JSON Test Data - news-updated-last.json</a></code>
+            <div id="feed_updated_last" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+
+            <h4>Updates to the feed - the update removes items</h4>
+            <p>
+                When the feed is updated with one or more news articles removed, such that the number of items decreases, the pagination numbering in the device should update to
+                reflect the new total number of items in the set. If the item we are viewing does not get removed, the currently selected item should not change. If the item we are currently
+                viewing gets removed, the active page should stay the same, so that the user does not get confused. The title and description being displayed should not change.
+            </p>
+            <p>
+            <ul>
+                <li><b>Current item</b> - the user has item 7 as the active page</li>
+                <li><b>Remove item 7</b> - the update to the feed removes item 7, the rightmost navigation numbers should change to 11 and 12</li>
+                <li><b>Navigate back</b> - the active page highlight changes from 7 to 6, item 6 should be displayed</li>
+                <li><b>Navigate forwards</b> - the active page highlight changes from 6 to 7, item 7 from the new set should be displayed (which was item 8 in the original set before the update)</li>
+            </ul>
+            </p>
+            <p>
+                This test was successful.
+            </p>
+            <code><a href="data/news-removed.json">JSON Test Data - news-removed.json</a></code>
+            <div id="feed_removed" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Updates to the feed - the update removes items - when the last item is the active page</h4>
+            <p>
+                As above, but a special case for when we are viewing the last item. When we are currently viewing the last item in the feed,
+                and the feed is updated such that the last news article is removed, the pagination options in the device should update to reflect
+                the new total number of items.  The active page should disappear, as the rightmost page navigation numbers will have been updated.
+                The title and description being displayed should not change. Clicking the previous navigation should mark the new last item in the set as active,
+                and the next navigation should remain disabled.
+            </p>
+            <p>
+            <ul>
+                <li><b>Current item</b> - the user has item 13 as the active page</li>
+                <li><b>Remove item 13</b> - the update to the feed removes item 13, the rightmost navigation numbers should change to 11 and 12, with no active page shown</li>
+                <li><b>Navigate back</b> - the active page highlight should show on item 12, item 12 should be displayed, the next navigation should remain disabled</li>
+                <li><b>Navigate back again</b> - the active page highlight should move to item 11, item 11 should be displayed, the next navigation should become enabled</li>
+                <li><b>Navigate forwards</b> - the active page highlight should move to item 12, item 12 should be displayed, the next navigation should become disabled</li>
+            </ul>
+            </p>
+            <p>
+                This test was successful.
+            </p>
+            <code><a href="data/news-removed-last.json">JSON Test Data - news-removed-last.json</a></code>
+            <div id="feed_removed_last" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+
+            <h4>Updates to the feed - the update removes items - when the first item is the active page</h4>
+            <p>
+                As above, but the case for when we are viewing the first item and it gets removed. When we are currently viewing the first item in the feed,
+                and the feed is updated such that the first news article is removed, the pagination options in the device should update to reflect
+                the new total number of items. The active page should disappear, as the leftmost page navigation numbers will have been updated.
+                The title and description being displayed should not change. Clicking the next navigation should mark the new first item in the set as active,
+                and the previous navigation should remain disabled.
+            </p>
+            <p>
+            <ul>
+                <li><b>Current item</b> - the user has item 1 as the active page</li>
+                <li><b>Remove item 1</b> - the update to the feed removes item 1, the leftmost navigation numbers should remain at 1 and 2, with no active page shown</li>
+                <li><b>Navigate forwards</b> - the active page highlight should show on item 1, item 1 should be displayed, the previous navigation should remain disabled</li>
+                <li><b>Navigate forwards again</b> - the active page highlight should move to item 2, item 2 should be displayed, the previous navigation should become enabled</li>
+                <li><b>Navigate back</b> - the active page highlight should move to item 1, item 1 should be displayed, the previous navigation should become disabled</li>
+            </ul>
+            </p>
+            <p>
+                This test varied from the expected output. When the first item was removed from the feed, the rightmost page navigation numbers updated to 11 and 12 to show the
+                reduced size of the set. The leftmost page navigation numbers did not change. But the active page highlight remained on item 1. Navigating forwards moved the active page
+                highlight to item 2, and which was item 3 in the original set. Navigating back moved the active page highlight to item 1, which was item 2 in the original
+                set. The previous navigation arrow was disabled and enabled correctly. This behaviour, whilst not as expected, is actually non-detrimental to the user
+                experience, so no fix was applied.
+            </p>
+            <code><a href="data/news-removed-first.json">JSON Test Data - news-removed-first.json</a></code>
+            <div id="feed_removed_first" class="feed limit_width"></div>
+
+            <hr class="bottom_gap"/>
+        </div>
+    </div>
+    </body>
+</html>

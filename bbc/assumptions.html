@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBC Pagination Device</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+		 
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+
+        <link href="css/website.css" rel="stylesheet" media="screen">
+        <link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen">
+
+
+		<script src="js/lib/jquery-min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+	<div class="container">
+
+        <h1>BBC Pagination Device<span>Matthew Weaver</span></h1>
+
+        <ul class="nav">
+            <li><a href="index.html">Introduction</a></li>
+            <li><a href="readme.html">Read Me</a></li>
+            <li><a href="assumptions.html"><b>Assumptions</b></a></li>
+            <li><a href="demo.html">Static Demos</a></li>
+            <li><a href="livedemo.html">Live Demos</a></li>
+            <li><a href="testing.html">Testing</a></li>
+            <li><a href="testdata.html">Test Data</a></li>
+            <li><a href="issues.html">Known Issues</a></li>
+            <li><a href="source.html">Source</a></li>
+        </ul>
+        <hr />
+		<div class="page">
+
+            <h3>Assumptions</h3>
+            <p>
+                To comply with both the GEL Pattern for pagination and the requirements of the interview task,
+                I have made the following assumptions:
+            </p>
+
+            <h4>Number of buttons</h4>
+            <p>
+                The interview task stipulated that the pagination device should contain no more than 7 buttons. I have interpreted this as no more
+                than 7 page buttons, so the previous and next navigation links do not count as buttons in my implementation. This allows the user to navigate
+                more easily between the previous and next items using the page number links either side of the active page link (when the active page link is in the
+                centre of the pagination options), rather than having to move their pointing device to the far left or right of the component.
+            </p>
+            <h4>Ellipses when truncating</h4>
+            <p>
+                The GEL Pattern for pagination states not to use ellipses when there are less than 2 hidden pages. I have interpreted this
+                to mean that when there are less than 2 hidden pages at just one end of the pagination component, then do not show the
+                ellipses for that end of the component.
+            </p>
+		</div>
+
+
+        <script src="js/jquery_initiator.js"></script>
+        <script src="js/BBCPaginate/js/BBCPaginate.jQuery.js" type="text/javascript"></script>
+
+        <hr class="bottom_gap"/>
+
+    </div>
+    </body>
+</html>

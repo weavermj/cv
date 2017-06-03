@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBC Pagination Device</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+		 
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+
+        <link href="css/website.css" rel="stylesheet" media="screen">
+        <link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen">
+
+
+		<script src="js/lib/jquery-min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+	<div class="container">
+
+        <h1>BBC Pagination Device<span>Matthew Weaver</span></h1>
+
+        <ul class="nav">
+            <li><a href="index.html">Introduction</a></li>
+            <li><a href="readme.html">Read Me</a></li>
+            <li><a href="assumptions.html">Assumptions</a></li>
+            <li><a href="demo.html">Static Demos</a></li>
+            <li><a href="livedemo.html">Live Demos</a></li>
+            <li><a href="testing.html">Testing</a></li>
+            <li><a href="testdata.html"><b>Test Data</b></a></li>
+            <li><a href="issues.html">Known Issues</a></li>
+            <li><a href="source.html">Source</a></li>
+        </ul>
+        <hr />
+		<div class="page">
+
+            <h3>Test Data</h3>
+            <p>
+                For the majority of testing during on-going development of the plugin, I used a set of 12 news articles that I compiled from the BBC News RSS feed
+                in a static JSON file with 2 fields to represent the title and description of each news article. Working with a consistent set of data helped identify
+                errors more easily when coding the updating of the navigation links from interaction with both the direct page links and previous/next navigation arrows.
+            </p>
+            <p>
+                Wherever a pagination device is rendered in these pages I have provided a link to the raw JSON test data that is used as the input to it.
+            </p>
+
+            <pre>
+[{
+"title": "Pryce guilty over Huhne points swap",
+"description": "Vicky Pryce, the former wife of ex-MP Chris Huhne, is found guilty of perverting the course of justice by taking speeding points on his behalf 10 years ago."
+},
+{
+"title": "Man held after fatal bus stabbing",
+"description": "A man is arrested after a 16-year-old girl was stabbed to death on a rush-hour bus on one of Birmingham's busiest roads."
+},
+{
+"title": "Processed meat 'early death' link",
+"description": "Sausages, ham, bacon and other processed meats appear to increase the risk of dying young, a study of half a million people across Europe suggests."
+},
+{
+"title": "UN backs tough new N Korea sanctions",
+"description": "The UN Security Council unanimously approves fresh sanctions against North Korea in response to Pyongyang's nuclear test last month."
+},
+{
+"title": "UK smoking 'halves' in 40 years",
+"description": "Smoking in Britain has more than halved and people are drinking on fewer nights of the week, according to a snapshot survey covering the past 40 years."
+},
+{
+"title": "Ex-detective in Pistorius case quits",
+"description": "The ex-lead detective in the Oscar Pistorius case, who faces separate charges of attempted murder, has resigned, South African police say."
+},
+{
+"title": "No alternative on economy, says PM",
+"description": "Changing course on the economy would plunge the UK 'back into the abyss', the PM warns - after Vince Cable suggests spending may have to rise."
+},
+{
+"title": "Sugar 'no intention' of paying out",
+"description": "Lord Sugar has 'no intention' of paying out to Apprentice winner Stella English 'unless instructed to do so', he tells a tribunal."
+},
+{
+"title": "Berlusconi convicted over wiretap",
+"description": "Italy's former Prime Minister Silvio Berlusconi is convicted and sentenced to a year in jail over an illegal wiretap."
+},
+{
+"title": "Graduate pay gap - women paid less",
+"description": "Female graduates are still likely to earn thousands of pounds less than men, according to a new report."
+},
+{
+"title": "BoE rejects more economic stimulus",
+"description": "The Bank of England's rate-setting committee has kept interest rates at 0.5% and rejected calls to inject more stimulus into the economy."
+},
+{
+"title": "Frozen phones give up data secrets",
+"description": "Putting an Android phone in a freezer for an hour can help get at its confidential contents, find German security researchers."
+}]
+            </pre>
+
+
+		</div>
+
+        <script src="js/jquery_initiator.js" ></script>
+        <script src="js/BBCPaginate/js/BBCPaginate.jQuery.js"></script>
+
+        <hr class="bottom_gap"/>
+    </div>
+    </body>
+</html>

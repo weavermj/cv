@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBC Pagination Device</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+		 
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+
+        <link href="css/website.css" rel="stylesheet" media="screen">
+        <link href="js/BBCPaginate/css/pagination.css" rel="stylesheet" media="screen">
+
+
+		<script src="js/lib/jquery-min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+	<div class="container">
+	
+		<h1>BBC Pagination Device<span>Matthew Weaver</span></h1>
+
+        <ul class="nav">
+            <li><a href="index.html"><b>Introduction</b></a></li>
+            <li><a href="readme.html">Read Me</a></li>
+            <li><a href="assumptions.html">Assumptions</a></li>
+            <li><a href="demo.html">Static Demos</a></li>
+            <li><a href="livedemo.html">Live Demos</a></li>
+            <li><a href="testing.html">Testing</a></li>
+            <li><a href="testdata.html">Test Data</a></li>
+            <li><a href="issues.html">Known Issues</a></li>
+            <li><a href="source.html">Source</a></li>
+        </ul>
+        <hr />
+		<div class="page">
+
+            <h3>Introduction</h3>
+            <p>
+            The BBC Pagination Device can be used to cycle through breaking news feeds that are fed from a JSON source.
+            </p>
+            <p>
+            The component has been designed to comply with both the BBC GEL Pattern for pagination and the specific brief as given in
+            the interview task (with a couple of <a href="assumptions.html">assumptions</a>).
+            </p>
+
+            <p>I have implemented the functionality as a re-usable jQuery plugin. Full details of the plugin's specification are
+                listed under the <a href="readme.html">read me</a> page.</p>
+
+            <h4>Example</h4>
+            <p>An initial example is provided below, which combines news articles from the live BBC Sport and BBC News JSON ticker feeds,
+                with a hyper link to the full article if it is available. A title is also displayed (which is a configurable option),
+                taken from the "prompt" attribute within the JSON data.
+            </p>
+
+            <div id="feed_multiple" class="feed"></div>
+
+            <p>
+                Further examples are available on the  <a href="livedemo.html">live demos</a> and <a href="demo.html">static demos</a> pages.
+            </p>
+
+            <h4>Features</h4>
+            <dl>
+                <dt>
+                    Reusable
+                </dt>
+                <dd>
+                    The device can be configured at run-time to paginate items from one or more URLs of a BBC news feed in JSON format, with a news-type
+                    filter option to show only breaking news items from across all feeds
+                </dd>
+
+                <dt>
+                    Multiple feeds per device
+                </dt>
+                <dd>
+                    The device can combine multiple feeds together into a single pagination component, to show news articles from
+                    a range of different news feeds from across the BBC website (e.g. News and Sport)
+                </dd>
+
+                <dt>
+                    Multiple devices per page
+                </dt>
+                <dd>
+                    Support for multiple instances of the pagination device within the DOM is built-in, for the
+                    purpose of separately paginating multiple news feeds from different sources on a single page, if required
+                </dd>
+
+                <dt>
+                    Auto refresh
+                </dt>
+                <dd>
+                    The JSON data is automatically refreshed every 60 seconds by default, and the interval is configurable at run-time
+                </dd>
+
+                <dt>
+                    Responsive
+                </dt>
+                <dd>
+                    The UI of the pagination device reacts to changes in display screen size, to aid usability on mobile devices,
+                    by repositioning the previous and next navigational controls below the numbered page navigation
+                </dd>
+             </dl>
+
+
+
+
+
+		</div>
+
+        <script src="js/jquery_initiator.js" ></script>
+        <script src="js/BBCPaginate/js/BBCPaginate.jQuery.js"></script>
+
+        <hr class="bottom_gap"/>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+
+div#news_item {
+    height: auto;
+    /*border: 1px solid #eeeeee;*/
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 5px;
+}
+
+div#news_item span.title {
+    font-size: 125%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+ul.page_controls,
+ul.mobile_nav {
+    list-style: none;
+    display: inline;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+ul.page_controls li,
+ul.mobile_nav li {
+    float: left;
+    width: 32px;
+    height: 32px;
+    background-color: #d3d3d3;
+    margin-right: 3px;
+}
+
+ul.page_controls li.back,
+ul.mobile_nav li.back {
+    background-color: #ffffff;
+    background-image: url('../img/back.png') ;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-position-y: 0px,0px;
+    padding-left: 40px;
+    padding-top: 8px;
+    height: 24px;
+    width: 68px;
+    margin-right: 16px;
+}
+
+ul.page_controls li.next,
+ul.mobile_nav li.next {
+    background-color: #ffffff;
+    background-image: url('../img/next.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-position-x: 40px,0px;
+    padding-right: 0px;
+    padding-top: 8px;
+    height: 24px;
+    width: 72px;
+    margin-left: 16px;
+}
+
+ul.mobile_nav {
+    display: none;
+    clear: both;
+    margin: 0;
+    padding-top: 10px;
+}
+
+ul.mobile_nav li.back {
+    display: inline;
+}
+
+ul.mobile_nav li.next {
+    display: inline;
+}
+
+ul.page_controls li.arrow.disabled,
+ul.mobile_nav li.arrow.disabled {
+    color: #c1c1c1;
+}
+
+ul.page_controls li.back.disabled,
+ul.mobile_nav li.back.disabled {
+    background-position: left bottom;
+    background-position-y: -32px, 0px;
+}
+
+ul.page_controls li.next.disabled,
+ul.mobile_nav li.next.disabled {
+    background-position: right bottom;
+    background-position-y: -32px, 0px;
+}
+
+ul.page_controls li.arrow.enabled:hover,
+ul.mobile_nav li.arrow.enabled:hover {
+    cursor:  pointer;
+    color: #000000;
+}
+
+div#pagination.show_hover ul.page_controls li.page.clickable_page:hover {
+    background-color: #F59523;
+    cursor: pointer;
+}
+
+ul.page_controls li.page.active_page:hover {
+    background-color: #444444;
+    cursor: default;
+}
+
+ul.page_controls li.ellipses_left,
+ul.page_controls li.ellipses_right {
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 3px;
+    height: 29px;
+    display: none;
+}
+
+
+ul.page_controls li.page  {
+    text-align: center;
+    padding-top: 8px;
+    height: 24px;
+}
+
+ul.page_controls li.active_page {
+    color: #ffffff;
+    background-color: #444444;
+}
+
+/* Media query for really tiny displays */
+@media screen and (max-width: 320px) {
+    /* Hide main navigation controls */
+    ul.page_controls li.next, ul.page_controls li.back {
+        display: none;
+    }
+
+    /* Center align the page navigation for smaller displays */
+    div#pagination {
+        text-align: center;
+    }
+
+    ul.page_controls {
+        display: inline-block;
+        margin-left: 0px;
+    }
+
+    /* Enable mobile navigation controls */
+    ul.mobile_nav {
+        display: block;
+    }
+
+    ul.mobile_nav li.next {
+        float: right;
+        text-align: left;
+    }
+
+    /* Reduce size of ellipses on small mobile devices to prevent wrapping */
+    ul.page_controls li.ellipses_left,
+    ul.page_controls li.ellipses_right {
+        font-size:60%;
+        width: 8px;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 520px) {
+    /* Hide main navigation controls */
+    ul.page_controls li.next, ul.page_controls li.back {
+        display: none;
+    }
+
+    /* Center align the page navigation for smaller displays */
+    div#pagination {
+        text-align: center;
+    }
+
+    ul.page_controls {
+        display: inline-block;
+        margin-left: 0px;
+    }
+
+    /* Enable mobile navigation controls */
+    ul.mobile_nav {
+        display: block;
+    }
+
+    ul.mobile_nav li.next {
+        float: right;
+        text-align: left;
+    }
+
+
+}
+

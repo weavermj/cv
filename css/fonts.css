@@ -1,0 +1,141 @@
+
+@font-face {
+    font-family: 'LibreBaskervilleRegular';
+    src: url('fonts/LibreBaskerville-Regular-webfont.eot');
+    src: url('fonts/LibreBaskerville-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/LibreBaskerville-Regular-webfont.woff') format('woff'),
+         url('fonts/LibreBaskerville-Regular-webfont.ttf') format('truetype'),
+         url('fonts/LibreBaskerville-Regular-webfont.svg#LibreBaskervilleRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LibreBaskervilleItalic';
+    src: url('fonts/LibreBaskerville-Italic-webfont.eot');
+    src: url('fonts/LibreBaskerville-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/LibreBaskerville-Italic-webfont.woff') format('woff'),
+         url('fonts/LibreBaskerville-Italic-webfont.ttf') format('truetype'),
+         url('fonts/LibreBaskerville-Italic-webfont.svg#LibreBaskervilleItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LibreBaskervilleBold';
+    src: url('fonts/LibreBaskerville-Bold-webfont.eot');
+    src: url('fonts/LibreBaskerville-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/LibreBaskerville-Bold-webfont.woff') format('woff'),
+         url('fonts/LibreBaskerville-Bold-webfont.ttf') format('truetype'),
+         url('fonts/LibreBaskerville-Bold-webfont.svg#LibreBaskervilleBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'AllerBold';
+    src: url('fonts/aller_bd-webfont.eot');
+    src: url('fonts/aller_bd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/aller_bd-webfont.woff') format('woff'),
+         url('fonts/aller_bd-webfont.ttf') format('truetype'),
+         url('fonts/aller_bd-webfont.svg#allerbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'AllerBoldItalic';
+    src: url('fonts/aller_bdit-webfont.eot');
+    src: url('fonts/aller_bdit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/aller_bdit-webfont.woff') format('woff'),
+         url('fonts/aller_bdit-webfont.ttf') format('truetype'),
+         url('fonts/aller_bdit-webfont.svg#allerbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'AllerItalic';
+    src: url('fonts/aller_it-webfont.eot');
+    src: url('fonts/aller_it-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/aller_it-webfont.woff') format('woff'),
+         url('fonts/aller_it-webfont.ttf') format('truetype'),
+         url('fonts/aller_it-webfont.svg#alleritalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'AllerLightRegular';
+    src: url('fonts/aller_lt-webfont.eot');
+    src: url('fonts/aller_lt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/aller_lt-webfont.woff') format('woff'),
+         url('fonts/aller_lt-webfont.ttf') format('truetype'),
+         url('fonts/aller_lt-webfont.svg#aller_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'AllerLightItalic';
+    src: url('fonts/aller_ltit-webfont.eot');
+    src: url('fonts/aller_ltit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/aller_ltit-webfont.woff') format('woff'),
+         url('fonts/aller_ltit-webfont.ttf') format('truetype'),
+         url('fonts/aller_ltit-webfont.svg#aller_lightitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'AllerRegular';
+    src: url('fonts/aller_rg-webfont.eot');
+    src: url('fonts/aller_rg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/aller_rg-webfont.woff') format('woff'),
+         url('fonts/aller_rg-webfont.ttf') format('truetype'),
+         url('fonts/aller_rg-webfont.svg#allerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'AllerDisplayRegular';
+    src: url('fonts/allerdisplay-webfont.eot');
+    src: url('fonts/allerdisplay-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/allerdisplay-webfont.woff') format('woff'),
+         url('fonts/allerdisplay-webfont.ttf') format('truetype'),
+         url('fonts/allerdisplay-webfont.svg#aller_displayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
